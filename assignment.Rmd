@@ -1,0 +1,44 @@
+---
+title: "Original Luas Green Line Stops - Developing Data Products Leaflet Map Assignment"
+date: "March 16, 2018"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Instructions
+
+Create a web page using R Markdown that features a map created with Leaflet.
+
+Host your webpage on either GitHub Pages, RPubs, or NeoCities.
+
+Your webpage must contain the date that you created the document, and it must contain a map created with Leaflet. We would love to see you show off your creativity!
+
+## Submission
+
+Today's date: March 16, 2018.
+
+Below is a map of the original Luas green line tram stops in Dublin, Ireland.
+
+```{r warning=FALSE}
+library(leaflet)
+my_map <- leaflet() %>% 
+  addTiles() %>% 
+  addMarkers(popup="St. Stephen's Green", lng=-6.26133333333333, lat=53.3390722222222) %>% 
+  addMarkers(popup="Harcourt", lng=-6.26265, lat=53.333358333333301) %>% 
+  addMarkers(popup="Charlemont", lng=-6.25868333333333, lat=53.330669444444403) %>% 
+  addMarkers(popup="Ranelagh", lng=-6.25620277777778, lat=53.326433333333298) %>% 
+  addMarkers(popup="Beechwood", lng=-6.25465277777778, lat=53.320822222222198) %>% 
+  addMarkers(popup="Cowper", lng=-6.25344722222222, lat=53.316466666666699) %>% 
+  addMarkers(popup="Milltown", lng=-6.25172777777778, lat=53.309916666666702) %>% 
+  addMarkers(popup="Windy Arbour", lng=-6.25070833333333, lat=53.301558333333297) %>% 
+  addMarkers(popup="Dundrum", lng=-6.24511666666667, lat=53.292358333333297) %>% 
+  addMarkers(popup="Balally", lng=-6.23677222222222, lat=53.286105555555601) %>% 
+  addMarkers(popup="Kilmacud", lng=-6.22388611111111, lat=53.283008333333299) %>% 
+  addMarkers(popup="Stillorgan", lng=-6.20991944444444, lat=53.279311111111099) %>% 
+  addMarkers(popup="Sandyford", lng=-6.20467777777778, lat=53.277602777777801)
+my_map
+
+```
