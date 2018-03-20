@@ -67,3 +67,5 @@ p <- p %>%
 
 `r p`
 
+## Source
+[Source code link](https://github.com/mickburke/DevelopingDataProducts/blob/master/plotly-assignment.Rmd)
