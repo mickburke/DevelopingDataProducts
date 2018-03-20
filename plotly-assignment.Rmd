@@ -1,0 +1,69 @@
+---
+title: "Population History in Ireland and County Dublin"
+subtitle: "Developing Data Products Week 3 Assignment"
+output: ioslides_presentation
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## Instructions
+
+- Create a web page presentation using R Markdown that features a plot created with Plotly. 
+- Host your webpage on either GitHub Pages, RPubs, or NeoCities. 
+- Your webpage must contain the date that you created the document, and it must contain a plot created with Plotly. 
+- We would love to see you show off your creativity!
+
+## Plot
+
+```{r plotsource, message=FALSE, echo=TRUE, warning=FALSE, include=FALSE}
+library(plotly)
+
+plot.df <- read.csv("DublinIrelandPopulationHistory.csv")
+
+hovertxt <- paste0("<b>Year: </b>", plot.df$Year, "<br>",
+                   "<b>Ireland Population: </b>", plot.df$Ireland / 1000000,"M<br>")
+
+p <- plot_ly(plot.df, x = ~Year, showlegend = F) %>%
+  add_lines(y = ~Ireland, line = list(width = 4, color = "#009A49"),
+            hoverinfo = "text", text = hovertxt)
+
+hovertxt <- paste0("<b>Year: </b>", plot.df$Year, "<br>",
+                   "<b>County Dublin Population: </b>", plot.df$Dublin / 1000000,"M<br>",
+                   "<b>National percentage: </b>", format(round(plot.df$Dublin * 100 / plot.df$Ireland, 2), nsmall = 2),"%<br>")
+
+p <- p %>%
+  add_lines(data = plot.df, y = ~Dublin, line = list(width = 4, color = "#88B8FD"),
+            hoverinfo = "text", text = hovertxt)
+
+p <- p %>%
+  layout(xaxis = list(title = "", showgrid = F, ticklen = 4, ticks = "inside",
+                      domain = c(0, 0.9), range = c(1835, 2020)),
+         yaxis = list(title = "", gridwidth = 2, domain = c(0, 0.9), range = c(0, 7000000)),
+         
+         annotations = list(
+           list(xref = "paper", yref = "paper", xanchor = "left", yanchor = "right",
+                x = 0, y = 1, showarrow = F, align = "left",
+                text = "<b>Population of Ireland and County Dublin from 1841<br><sup>Urbanization; National population decline and growth</sup></b>",
+                font = list(size = 18, family = "Arial")),
+           
+           list(xref = "paper", yref = "paper", xanchor = "left", yanchor = "right",
+                x = 0, y = -0.07, showarrow = F, align = "left",
+                text = "<b>Source: https://en.wikipedia.org/wiki/Irish_population_analysis</b>",
+                font = list(size = 10, family = "Arial", color = "#bfbfbf")),
+           
+           list(xref = "plot", yref = "plot", xanchor = "left", yanchor = "right",
+                x = 2016, y = 1345000, showarrow = F, align = "left",
+                text = "<b>County Dublin</b>",
+                font = list(size = 12, family = "Arial", color = "#88B8FD")),
+           
+           list(xref = "plot", yref = "plot", xanchor = "left", yanchor = "right",
+                x = 2016, y = 4760000, showarrow = F, align = "left",
+                text = "<b>Ireland</b>",
+                font = list(size = 12, family = "Arial", color = "#009A49"))
+         ))
+```
+
+`r p`
+
