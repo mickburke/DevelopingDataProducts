@@ -33,5 +33,5 @@ Interested?
 ========================================================
 
 - Check out the Explorer on [shinyapps.io](https://mickburke.shinyapps.io/IrishTaxationExplorer/)
-- Source code is available on [GitHub](https://github.com/mickburke/DevelopingDataProducts/IrishTaxationExplorer)
+- Source code is available on [GitHub](https://github.com/mickburke/DevelopingDataProducts/tree/master/IrishTaxationExplorer)
 - Created as an assignment in the Developing Data Products course as part of the [Coursera Data Science Specialization](https://www.coursera.org/specializations/jhu-data-science)
